@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "KitsuGit"
-include ':app'
+include (":app")
