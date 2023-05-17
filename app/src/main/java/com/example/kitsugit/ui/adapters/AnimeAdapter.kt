@@ -12,6 +12,7 @@ import com.example.kitsugit.models.DataItem
 class AnimeAdapter : ListAdapter<DataItem, AnimeAdapter.AnimeViewHolder>(
     BaseDiffUtilItemCallback()
 ) {
+
     inner class AnimeViewHolder(private val binding: ItemKitsuBinding) :
         RecyclerView.ViewHolder(binding.root) {
 

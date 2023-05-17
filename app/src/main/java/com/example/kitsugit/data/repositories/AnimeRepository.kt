@@ -11,4 +11,8 @@ class AnimeRepository @Inject constructor(
     fun fetchAnime() = doRequest {
         animeApiService.fetchAnime()
     }
+
+    fun fetchDetailAnime(id: String) = doRequest {
+        animeApiService.fetchDetailAnime(id)
+    }
 }
