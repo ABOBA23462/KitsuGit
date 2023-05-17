@@ -11,4 +11,10 @@
         android:label="fragment_anime"
         tools:layout="@layout/fragment_anime" />
 
+    <fragment
+        android:id="@+id/mangaFragment"
+        android:name="com.example.kitsugit.ui.fragments.manga.MangaFragment"
+        android:label="fragment_manga"
+        tools:layout="@layout/fragment_manga" />
+
 </navigation>

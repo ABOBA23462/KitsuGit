@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -17,6 +18,7 @@
         <ImageView
             android:id="@+id/image_kitsu"
             android:layout_width="match_parent"
+            android:scaleType="fitXY"
             android:layout_height="match_parent" />
 
         <TextView
@@ -26,7 +28,8 @@
             android:layout_gravity="bottom|center"
             android:layout_marginBottom="4dp"
             android:textColor="@color/white"
-            android:textSize="9sp" />
+            android:textSize="9sp"
+            tools:ignore="SmallSp" />
 
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
