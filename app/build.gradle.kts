@@ -71,6 +71,7 @@ dependencies {
 
     // View Pager2
     implementation("androidx.viewpager2:viewpager2:1.1.0-beta01")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
     // Retrofit 2
     val retrofitVersion = "2.9.0"
