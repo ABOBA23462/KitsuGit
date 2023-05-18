@@ -9,12 +9,20 @@ import com.example.kitsugit.base.BaseDiffUtilItemCallback
 import com.example.kitsugit.databinding.ItemKitsuBinding
 import com.example.kitsugit.models.DataItem
 
-class MangaAdapter: ListAdapter<DataItem, MangaAdapter.MangaViewHolder>(
+class MangaAdapter(
+    val onItemClick: (id: String) -> Unit
+) : ListAdapter<DataItem, MangaAdapter.MangaViewHolder>(
     BaseDiffUtilItemCallback()
 ) {
 
     inner class MangaViewHolder(private val binding: ItemKitsuBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            itemView.setOnClickListener {
+                getItem(absoluteAdapterPosition)?.let { it1 -> onItemClick(it1.id) }
+            }
+        }
 
         fun onBind(dataItem: DataItem) {
             binding.tvKitsu.text = dataItem.attributes.titles.enJp

@@ -2,11 +2,13 @@ package com.example.kitsugit.ui.fragments.anime
 
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.kitsugit.R
 import com.example.kitsugit.base.BaseFragment
 import com.example.kitsugit.databinding.FragmentAnimeBinding
 import com.example.kitsugit.ui.adapters.AnimeAdapter
+import com.example.kitsugit.ui.fragments.home.HomeFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -15,7 +17,7 @@ class AnimeFragment : BaseFragment<FragmentAnimeBinding, AnimeViewModel>(R.layou
 
     override val binding by viewBinding(FragmentAnimeBinding::bind)
     override val viewModel: AnimeViewModel by viewModels()
-    private val animeAdapter = AnimeAdapter()
+    private val animeAdapter = AnimeAdapter(this::onItemClick)
 
     override fun initialize() {
         binding.animeRecView.adapter = animeAdapter
@@ -31,5 +33,11 @@ class AnimeFragment : BaseFragment<FragmentAnimeBinding, AnimeViewModel>(R.layou
                 animeAdapter.submitList(it.data?.data)
             }
         }
+    }
+
+    private fun onItemClick(id: String) {
+        findNavController().navigate(
+            HomeFragmentDirections.actionHomeFragmentToDetailAnimeFragment(id)
+        )
     }
 }
