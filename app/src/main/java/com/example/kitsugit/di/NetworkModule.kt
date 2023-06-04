@@ -1,6 +1,6 @@
 package com.example.kitsugit.di
 
-import com.example.kitsugit.data.remote.RetrofitClient
+import com.example.data.remote.RetrofitClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

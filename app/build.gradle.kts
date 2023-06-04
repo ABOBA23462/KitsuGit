@@ -1,27 +1,24 @@
 plugins {
-    id("com.android.application")
-    kotlin("android")
+    id(Plugins.application)
+    kotlin(Plugins.kotlinAndroid)
 
     // Kapt
-    kotlin("kapt")
+    kotlin(Plugins.kapt)
 
     // Hilt
-    id("com.google.dagger.hilt.android")
-
-    // Save args
-    id ("androidx.navigation.safeargs.kotlin")
+    id(Plugins.hilt)
 }
 
 android {
     namespace = "com.example.kitsugit"
-    compileSdk = 33
+    compileSdk = Config.compileSdk
 
     defaultConfig {
-        applicationId = "com.example.kitsugit"
-        minSdk = 24
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = Config.applicationId
+        minSdk = Config.minSdk
+        targetSdk = Config.targetSdk
+        versionCode = Config.versionCode
+        versionName = Config.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -41,68 +38,33 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
-    }
-
-    buildFeatures {
-        // ViewBinding
-        viewBinding = true
+        jvmTarget = Config.jvmTarget
     }
 }
 
 dependencies {
 
-    implementation ("androidx.fragment:fragment-ktx:1.5.7")
-    // Core
-    implementation("androidx.core:core-ktx:1.10.0")
+    implementation(Dependencies.Fragment.fragment)
 
-    // AppCompat
-    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation(Dependencies.AndroidCore.core)
 
-    // Material Design
-    implementation("com.google.android.material:material:1.9.0")
+    implementation(Dependencies.UIComponents.appCompat)
 
-    // UI Components
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation(Dependencies.UIComponents.material)
 
-    // Architecture Components
-    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+    implementation(Dependencies.UIComponents.constraint)
 
-    // View Pager2
-    implementation("androidx.viewpager2:viewpager2:1.1.0-beta01")
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation(Dependencies.Lifecycles.liveData)
 
-    // Retrofit 2
-    val retrofitVersion = "2.9.0"
-    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
-    // Gson
-    implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
-
-    // OkHttp
-    implementation(platform("com.squareup.okhttp3:okhttp-bom:5.0.0-alpha.6"))
-    implementation("com.squareup.okhttp3:okhttp")
-    implementation("com.squareup.okhttp3:logging-interceptor")
-
-    // Navigation
-    val navVersion = "2.5.3"
-
-    // Implementation
-    implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
-    implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
-
-    // Glide
-    implementation("com.github.bumptech.glide:glide:4.15.0")
-    annotationProcessor("com.github.bumptech.glide:compiler:4.15.0")
-
-    // ViewBindingPropertyDelegate
-    val view_binding_property_delegate = "1.5.3"
-
-    // Noinspection GradleDependency
-    implementation("com.github.kirich1409:viewbindingpropertydelegate-noreflection:$view_binding_property_delegate")
+    implementation(Dependencies.Lifecycles.viewModel)
 
     // Hilt
-    val hilt_version = "2.45"
-    implementation("com.google.dagger:hilt-android:$hilt_version")
-    kapt("com.google.dagger:hilt-compiler:$hilt_version")
+    implementation(Dependencies.Hilt.hiltAndroid)
+    kapt(Dependencies.Hilt.hiltCompiler)
+
+    // Data
+    implementation(project(":data"))
+
+    // Presentation
+    implementation(project(":presentation"))
 }
