@@ -6,5 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface AnimeRepository {
 
-    suspend fun fetchAnime(): Flow<Either<String, List<DataItem>>>
+    fun fetchAnime(): Flow<Either<String, List<DataItem>>>
 }
